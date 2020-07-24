@@ -8,6 +8,8 @@
 
 // function.apply(this, [arg1, arg2]);
 
+// let func = function.bind(this, arg1, arg2);  - Bind returns a new function
+
 let user1 = {
     firstName: 'Darz',
     lastName: 'K',
@@ -56,3 +58,46 @@ console.log(user2.fullName.call(user1)); // Darz K
 
 // call method of another function, overiding this
 console.log(user2.fullName.apply(user1)); // Darz K
+
+//Bind
+let morningGreet = greeting2.bind(user1, "Good Morning");
+
+let afternoonGreet = greeting2.bind(user1, "Good Afternoon");
+
+//because I'm using greeting2 that passes in 2 args - we get the following result
+//If used with greeting, it will still work, though would not have the extra arg included in the following invokationz
+morningGreet("!"); //Good Morning Darz!
+
+afternoonGreet("."); //Good Afternoon Darz.
+
+//cannot overide Bind with call or apply
+
+
+//Example 2
+
+//call
+let add = function(c) {
+    console.log('Answer ' + (this.a + this.b + c));
+
+}
+
+let obj = {
+    a: 1,
+    b: 2
+}
+
+add.call(obj, 3); //Answer 6
+// using the resident arguments variables and the slice method from the prototype
+let argsToArray = function() {
+    console.log([].slice.call(arguments));
+}
+
+argsToArray(1, 2, 3); // [ 1, 2, 3 ]
+
+//apply - in this example, taking advantage of apply to use the Math.min method to find the min in an array, which
+//could not normally be done on an array with Math.min
+let numArray = [1, 2, 3];
+
+console.log('Answer array no. ' + (Math.min(numArray))); //Answer array no. NaN
+//(no object passed in - null used)
+console.log('Answer min no. ' + (Math.min.apply(null, numArray))); //Answer min no. 1
