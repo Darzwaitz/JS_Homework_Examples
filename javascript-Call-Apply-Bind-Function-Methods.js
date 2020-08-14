@@ -70,10 +70,33 @@ morningGreet("!"); //Good Morning Darz!
 
 afternoonGreet("."); //Good Afternoon Darz.
 
+let c1 = {
+    x: 5,
+    y: 10
+}
+
+let c2 = {
+    x: 75,
+    y: 500
+}
+
+function printCoords() {
+    console.log(this.x + ", " + this.y);
+}
+
+//actually creates the new function and is assigned to the variable
+let c1_func = printCoords.bind(c1);
+
+let c2_func = printCoords.bind(c2);
+
+c1_func(); //5, 10
+
+c2_func(); //75, 500
+
 //cannot overide Bind with call or apply
 
 
-//Example 2
+//Examples 2
 
 //call
 let add = function(c) {
