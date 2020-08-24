@@ -1,3 +1,5 @@
+//immutable means objects cannot change
+
 "use strict";
 let obj = {
     firstName: 'Darzy',
@@ -23,7 +25,7 @@ let obj2 = {
 
 //obj.startDate = 'September 11th 2001';
 
-//the log will not writeable startDate - koz itz set to false
+//the log will show startDate is not writeable  - koz itz set to false
 //this doesnt throw an error - though if using strict mode it will - "use strict";
 
 //console.log(obj);
@@ -37,7 +39,8 @@ let obj2 = {
 
 //Example 2
 
-//using static method from object
+//using static method from object - cant delete or add any properties with seal
+// can change existing properties
 Object.seal(obj);
 
 //obj.newProp = true; // TypeError: Cannot add property newProp, object is not extensible
