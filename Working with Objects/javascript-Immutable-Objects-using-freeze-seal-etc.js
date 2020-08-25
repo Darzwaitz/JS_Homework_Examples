@@ -36,6 +36,8 @@ let obj2 = {
 //     type: 'admin'
 //   }
 
+//to check if a property is Enumerable
+//obj.propertyIsEnumerable(startDate); //will return boolean
 
 //Example 2
 
