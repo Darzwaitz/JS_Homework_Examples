@@ -62,7 +62,7 @@ Object.setPrototypeOf(obj5, objProto);
 console.log(obj5.fullName()); //Big D
 
 //some JS frameworks provide for taking properties from multiple different objects and collating them into one new object
-//Object.assign accomplishes this is Vanilla JS
+//Object.assign accomplishes this in Vanilla JS
 let obj6 = {
     start: 0
 };
