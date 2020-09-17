@@ -1,6 +1,4 @@
-var MAINAPP = MAINAPP || {};
-
-(function(nsp) {
+var MAINAPP = (function(nsp) {
     /*
     DOM functionaility
     */
@@ -147,6 +145,7 @@ var MAINAPP = MAINAPP || {};
             addClass(feedback, 'visible');
         },
         hideFeedback = function() {
+            //looks like a class of feedback & visible
             var feedback = $('.feedback.visible');
             removeClass(feedback, 'visible');
         };
@@ -159,4 +158,10 @@ var MAINAPP = MAINAPP || {};
         initQuiz();
     });
 
-})(MAINAPP);
+    //Public Methods and Properties
+    nsp.displayFeedback = displayFeedback;
+    nsp.$ = $;
+
+    return nsp;
+
+})(MAINAPP || {});
