@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,100italic|Roboto+Mono:400,100italic,700);
-
 #logo {
     text-align: center;
     padding-bottom: 1%;
@@ -44,9 +43,12 @@ textarea.fill-in {
     font-weight: 400;
     font-size: 1.2em;
     margin-bottom: 2rem;
-    box-sizing: border-box;         /* For IE and modern versions of Chrome */
-    -moz-box-sizing: border-box;    /* For Firefox                          */
-    -webkit-box-sizing: border-box; /* For Safari                           */
+    box-sizing: border-box;
+    /* For IE and modern versions of Chrome */
+    -moz-box-sizing: border-box;
+    /* For Firefox                          */
+    -webkit-box-sizing: border-box;
+    /* For Safari                           */
 }
 
 textarea.fill-in:active,
@@ -87,10 +89,10 @@ button.fill-in-submit {
     -ms-user-select: none;
     user-select: none;
     -webkit-transition: opacity 1s ease-in-out;
-       -moz-transition: opacity 1s ease-in-out;
-        -ms-transition: opacity 1s ease-in-out;
-         -o-transition: opacity 1s ease-in-out;
-            transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .feedback {
@@ -98,14 +100,14 @@ button.fill-in-submit {
     display: inline-block;
     position: absolute;
     left: 0;
-    color: c81900;
+    color: #c81900;
     font-size: 1.2em;
     font-family: 'Roboto';
     -webkit-transition: opacity 1s ease-in-out;
-       -moz-transition: opacity 1s ease-in-out;
-        -ms-transition: opacity 1s ease-in-out;
-         -o-transition: opacity 1s ease-in-out;
-            transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .feedback.no-answer {
@@ -140,6 +142,3 @@ button.fill-in-submit {
 .visible {
     opacity: 1;
 }
-
-
-
