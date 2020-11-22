@@ -20,9 +20,3 @@ var MAINAPP = (function(app) {
 
     return app;
 })(MAINAPP || {});
-
-(function init() {
-    MAINAPP.loadJSON('data.json');
-    console.log(MAINAPP.jsonObj.title);
-
-})();
