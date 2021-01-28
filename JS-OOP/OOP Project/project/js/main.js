@@ -33,7 +33,7 @@ var MAINAPP = (function(nsp, $, domU, strU) {
             questionsArray[i] = new Question(questionsArray[i]);
         }
         console.log(questionsArray);
-        questionsArray[1].populateQuestion();
+        questionsArray[1].populateTheQuestion();
         questionsArray[1].displayQuestion();
     },
 
@@ -69,24 +69,60 @@ var MAINAPP = (function(nsp, $, domU, strU) {
             case "fill-in":
                 this.populateTheQuestion = function() {
                     this.populateQuestion();
+                    htmlDiv.querySelector('textarea').value = "";
                 };
                 this.checkTheAnswer = function() {
                     console.log("fill-in");
-                    
+                    var ans,
+                        value = htmlDiv.querySelector('textarea').value;
+
+                    if (value !== "") {
+                        ans = strU.breakOut(this.correctResp, ",");
+                        this.correct = ans.every(function(val) {
+                            return (value.indexOf(val) > -1);
+                        });
+                        this.result = (this.correct) ? 'correct' : 'incorrect';
+                    }
+                    this.hideFeedback();
+                    this.displayFeedback();
                 };
                 break;
             case "multi-choice":
+                var distractors = htmlDiv.querySelectorAll('label'),
+                distractorsRadio = htmlDiv.querySelectorAll('input');
                 
                 this.populateTheQuestion = function() {
-                    
+                    domU.addClass(distractors, 'remove');
+                    for (let i = 0; i < distractors.length; i++) {
+                        if (this.distractorText[i] !== undefined) {
+                            distractors[i].innerHTML = this.distractorText[i];
+                            domU.removeClass([distractors[i]],'remove');
+                        }
+                    }
+                    for (let i = 0; i < distractorsRadio.length; i++) {
+                        distractorsRadio[i].checked = false;
+                    }
                 };
                 this.checkTheAnswer = function() {
-                    
+                    console.log("multi-choice");
+
+                    for (let i = 0; i < distractors.length; i++) {
+                        if (distractorsRadio[i].checked) {
+                            this.studentResp = $('#' + distractorsRadio[i].id + '_label')[0].innerHTML;
+                        }
+                    }
+                    if (this.studentResp !== "") {
+                        this.correct = this.studentResp === this.correctResp;
+                        this.result = (this.correct) ? 'correct' : 'incorrect';
+                    }
+                    this.hideFeedback();
+                    this.displayFeedback();
                 };
                 break;
             default:
                 this.populateTheQuestion = function() {
                     this.populateQuestion();
+                    
                 };
                 break;
         }
