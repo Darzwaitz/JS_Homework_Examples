@@ -33,8 +33,8 @@ var MAINAPP = (function(nsp, $, domU, strU) {
             questionsArray[i] = new Question(questionsArray[i]);
         }
         console.log(questionsArray);
-        questionsArray[1].populateTheQuestion();
-        questionsArray[1].displayQuestion();
+        questionsArray[0].populateTheQuestion();
+        questionsArray[0].displayQuestion();
     },
 
     initQuiz = function() {
@@ -78,6 +78,7 @@ var MAINAPP = (function(nsp, $, domU, strU) {
 
                     if (value !== "") {
                         ans = strU.breakOut(this.correctResp, ",");
+                        //.every returns true or false
                         this.correct = ans.every(function(val) {
                             return (value.indexOf(val) > -1);
                         });
@@ -129,7 +130,12 @@ var MAINAPP = (function(nsp, $, domU, strU) {
     };    
     
     Question.prototype.displayQuestion = function() {
+        var checkTheAnswer = this.checkTheAnswer.bind(this);
         domU.removeClass([this.htmlDiv],'hidden-question');
+        domU.assignEvent(this.htmlDiv.querySelectorAll('.fill-in-submit.btn-primary'), 'click', 
+        function(){
+            checkTheAnswer();
+        });
     };
     Question.prototype.hideQuestion = function() {
         domU.addClass([this.htmlDiv], 'hidden-question');
