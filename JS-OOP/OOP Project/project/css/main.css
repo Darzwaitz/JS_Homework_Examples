@@ -56,11 +56,11 @@ textarea.fill-in:focus {
 }
 
 button.fill-in-submit {
-    display: inline-block;
+    /* display: inline-block; */
     opacity: 1;
-    position: absolute;
+    /* position: absolute; */
     right: 0;
-    /*float: right;*/
+    float: right;
     z-index: 10;
     margin-top: 2em;
 }

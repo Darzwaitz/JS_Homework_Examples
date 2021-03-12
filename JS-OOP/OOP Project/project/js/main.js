@@ -32,9 +32,10 @@ var MAINAPP = (function(nsp, $, domU, strU) {
         for (let i = 0; i < questionsArray.length; i++) {
             questionsArray[i] = new Question(questionsArray[i]);
         }
-        console.log(questionsArray);
-        questionsArray[0].populateTheQuestion();
-        questionsArray[0].displayQuestion();
+        // console.log(questionsArray);
+        // questionsArray[0].populateTheQuestion();
+        // questionsArray[0].displayQuestion();
+        setUpNavigation();
     },
 
     initQuiz = function() {
@@ -72,7 +73,7 @@ var MAINAPP = (function(nsp, $, domU, strU) {
                     htmlDiv.querySelector('textarea').value = "";
                 };
                 this.checkTheAnswer = function() {
-                    console.log("fill-in");
+                    // console.log("fill-in");
                     var ans,
                         value = htmlDiv.querySelector('textarea').value;
 
@@ -157,6 +158,56 @@ var MAINAPP = (function(nsp, $, domU, strU) {
     };
     Question.prototype.checkAnswer = function() {
 
+    };
+
+    //SETUP NAVIGATION OBJECT
+    var setUpNavigation = function () {
+
+        navigationProto = {
+            questionsArray: questionsArray,
+            totalQuestions: questionsArray.length,
+            currentQuestion: 0,
+            hideQuestion: function() {
+                var curQuestion = this.questionsArray[this.currentQuestion];
+                curQuestion.hideQuestion();
+            },
+            showQuestion: function() {
+                var newQuestion = this.questionsArray[this.currentQuestion];
+                newQuestion.hideFeedback();
+                newQuestion.populateTheQuestion();
+                newQuestion.displayQuestion();
+            }
+        };
+
+        nextBtn = Object.create(navigationProto);
+        nextBtn.goNext = function (e) {
+            if (this.currentQuestion < this.totalQuestions - 1) {
+                this.hideQuestion();
+                this.currentQuestion = this.currentQuestion + 1;
+                this.showQuestion();                
+            }
+        };
+
+        prevBtn = Object.create(navigationProto);
+        prevBtn.goPrev = function(e) {
+            if (this.currentQuestion > 0){
+                this.hideQuestion();
+                this.currentQuestion = this.currentQuestion - 1;
+                this.showQuestion();
+            }
+        };
+
+        $('.btn-prev')[0].addEventListener("click", function (e) {
+            prevBtn.goPrev(e);
+        });
+        $('.btn-next')[0].addEventListener("click", function (e) {
+            nextBtn.goNext(e);
+        });
+
+        navigationProto.showQuestion();
+
+        nsp.prevBtn = prevBtn;
+        nsp.nextBtn = nextBtn;
     };
 
     /*
