@@ -162,11 +162,11 @@ var MAINAPP = (function(nsp, $, domU, strU) {
 
     //SETUP NAVIGATION OBJECT
     var setUpNavigation = function () {
-
+        var cQuestion = 0;
         navigationProto = {
             questionsArray: questionsArray,
             totalQuestions: questionsArray.length,
-            currentQuestion: 0,
+            // currentQuestion: 0,
             hideQuestion: function() {
                 var curQuestion = this.questionsArray[this.currentQuestion];
                 curQuestion.hideQuestion();
@@ -176,6 +176,12 @@ var MAINAPP = (function(nsp, $, domU, strU) {
                 newQuestion.hideFeedback();
                 newQuestion.populateTheQuestion();
                 newQuestion.displayQuestion();
+            },
+            get currentQuestion(){
+                return cQuestion;
+            },
+            set currentQuestion(value){
+                cQuestion = value;
             }
         };
 
