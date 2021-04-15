@@ -47,13 +47,18 @@ var MAINAPP = (function(nsp, $, domU, strU) {
         var htmlDiv;
         //Transfer Data
         this.questionDiv = (obj.type === "true-false") ? "multi-choice" : obj.type;
-        this.type = obj.type;
-        this.id = obj.id;
-        this.questionText = obj.questionText;
-        this.distractorText = obj.distractors;
-        this.correctResp = obj.correctResp;
-        this.feedback = obj.feedback;
-        this.weight = obj.weight;
+        // this.type = obj.type;
+        // this.id = obj.id;
+        // this.questionText = obj.questionText;
+        // this.distractorText = obj.distractors;
+        // this.correctResp = obj.correctResp;
+        // this.feedback = obj.feedback;
+        // this.weight = obj.weight;
+        //for in loop refactor
+        for (let i in obj) {
+            this[i] = obj[i];
+        }
+
         this.result = "no-answer";
         this.studentResp = "";
         this.correct = false;
@@ -166,7 +171,7 @@ var MAINAPP = (function(nsp, $, domU, strU) {
         navigationProto = {
             questionsArray: questionsArray,
             totalQuestions: questionsArray.length,
-            // currentQuestion: 0,
+            // currentQuestion: 0, REMOVE for get and set accessors
             hideQuestion: function() {
                 var curQuestion = this.questionsArray[this.currentQuestion];
                 curQuestion.hideQuestion();
