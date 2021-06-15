@@ -16,9 +16,9 @@ map.set(1, 'one');
 map.set(2, 'two');
 map.set(3, 'three');
 
-for (let val of map) {
-    console.log(val);
-}
+// for (let val of map) {
+//     console.log(val);
+// }
 //Map aint an array - it won't have pop, push methods etc.
 //Map has foreach etc.
 
@@ -28,10 +28,16 @@ console.log(Array.isArray(map)); //false
 
 let divs = document.querySelectorAll('div');
 
-for (let val of divs) {
-    console.log(val);
-}
+// for (let val of divs) {
+//     console.log(val);
+// }
 /*
 <div class="title2"></div>
 <div class="line"></div>
 <div id="jslogo"></div> */
+
+//NB spread operator doeznt work on objects
+let mapArray = [...map]; //convertz to array with split operator
+let divsArray = [...divs]; //convertz to array with split operator
+let mapArray2 = Array.from(map); //convertz to array with Array.from static method
+let divsArray2 = Array.from(divs); //convertz to array with Array.from static method
