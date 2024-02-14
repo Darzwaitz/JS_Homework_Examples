@@ -6,7 +6,7 @@ function validateEmail(email) {
   }
 }
 
-console.log(validateEmail("john@gmail.com"));
-console.log(validateEmail("john@gmail"));
+// console.log(validateEmail("john@gmail.com"));
+// console.log(validateEmail("john@gmail"));
 
 module.exports = validateEmail;
