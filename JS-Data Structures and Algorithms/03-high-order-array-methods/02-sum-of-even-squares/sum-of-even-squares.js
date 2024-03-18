@@ -14,6 +14,6 @@ function sumOfEvenSquares(numbers) {
 }
 
 // sumOfEvenSquares(numbers);
-console.log(sumOfEvenSquares([1, 2, 3, 4, 5]));
+// console.log(sumOfEvenSquares([1, 2, 3, 4, 5]));
 
 module.exports = sumOfEvenSquares;
